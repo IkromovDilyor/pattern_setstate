@@ -1,8 +1,6 @@
 import 'dart:convert';
-
 import 'package:http/http.dart';
 import 'package:state_management/model/post_model.dart';
-
 class Network {
   static String BASE = "jsonplaceholder.typicode.com";
   static Map<String,String> headers = {'Content-Type':'application/json; charset=UTF-8'};
@@ -86,6 +84,12 @@ class Network {
   static List<Post> parsePostList(String response) {
     dynamic json = jsonDecode(response);
     var data = List<Post>.from(json.map((x) => Post.fromJson(x)));
+    return data;
+  }
+
+  static Post parsePost(String response) {
+    dynamic json = jsonDecode(response);
+    var data = Post.fromJson(json);
     return data;
   }
 

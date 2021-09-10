@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:state_management/model/post_model.dart';
+import 'package:state_management/pages/post_detail_page.dart';
 import 'package:state_management/pages/update_page.dart';
 import 'package:state_management/services/http_service.dart';
 
@@ -83,21 +84,31 @@ class _HomePageState extends State<HomePage> {
     return Slidable(
       actionPane: SlidableDrawerActionPane(),
       actionExtentRatio: 0.25,
-      child: Container(
-        padding: EdgeInsets.only(left: 20,right: 20, top:20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              post.title.toUpperCase(),style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold
+      child: GestureDetector(
+        onTap: (){
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => DetailPage(itemOfList: post.id),
             ),
-            ),
-            SizedBox(height: 5,),
-            Text(post.body)
+          );
+        },
+        child: Container(
+          padding: EdgeInsets.only(left: 20,right: 20, top:20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                post.title.toUpperCase(),style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold
+              ),
+              ),
+              SizedBox(height: 5,),
+              Text(post.body)
 
-          ],
+            ],
+          ),
         ),
       ),
       actions:<Widget> [
