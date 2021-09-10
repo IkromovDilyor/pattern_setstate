@@ -44,15 +44,11 @@ class _DetailPageState extends State<DetailPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Title
                 Text(
                   post.title.toUpperCase(),
                   style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
                 ),
-
-                SizedBox(height: 5,),
-
-                // Body
+                SizedBox(height: 10,),
                 Text(post.body),
               ],
             ),
